@@ -1,0 +1,35 @@
+name: Skill request
+description: Suggest a new portable agent skill.
+title: "[Skill]: "
+labels:
+  - enhancement
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name
+      description: Use a short lowercase, hyphenated name.
+      placeholder: example-skill
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case and trigger
+      description: What should the skill do, and when should an agent select it?
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Expected workflow
+      description: Describe the key steps and expected output.
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Runtime and permissions
+      description: List scripts, dependencies, network access, or permissions, or state "None."
+    validations:
+      required: true

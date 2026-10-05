@@ -1,0 +1,49 @@
+name: Bug report
+description: Report incorrect or unsafe behavior in an existing skill.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, private data, or exploitable security details.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill or repository component is affected?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide a minimal, non-sensitive prompt or sequence of steps.
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client
+      options:
+        - Claude Code
+        - GitHub Copilot
+        - Another Agent Skills client
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I removed secrets and private data from this report.
+          required: true
+        - label: This report does not contain undisclosed vulnerability details.
+          required: true
