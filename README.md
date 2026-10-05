@@ -25,6 +25,7 @@ contains a `SKILL.md` file with `name` and `description` frontmatter.
 | Skill | Purpose |
 | --- | --- |
 | [`meeting-notes-organizer`](.claude/skills/meeting-notes-organizer/SKILL.md) | Turn raw meeting notes into a concise, structured summary without inventing facts. |
+| [`pr-review`](.claude/skills/pr-review/SKILL.md) | Perform evidence-backed pull-request reviews with normalized findings, safe previews, and confirmed publishing. |
 
 ## Use a skill
 
@@ -60,6 +61,22 @@ your-project/
 
 Review every skill and bundled script before installing it. Agent skills can
 instruct an agent to use tools with the same access as that agent.
+
+The canonical [`pr-review`](.claude/skills/pr-review/SKILL.md) skill works
+standalone from `.claude/skills/pr-review`; the generator is not required.
+
+For a stack-optimized installation, the optional
+[`portable-pr-review-skill`](tools/portable-pr-review-skill/README.md) tool
+detects a consumer repository's stack and available integrations, shows the
+evidence for review, and asks for confirmation before generating GitHub Copilot,
+Claude Code, or both installations:
+
+```powershell
+python -m pip install -e .\tools\portable-pr-review-skill
+Set-Location path\to\consumer-repository
+python -m pr_review_skill setup
+python -m pr_review_skill doctor --profile .pr-review-skill.json
+```
 
 ## Create a skill
 
@@ -100,6 +117,7 @@ requirements.
 .github/workflows/              Automated validation
 scripts/validate_skills.py      Dependency-free validator
 tests/                          Validator tests
+tools/portable-pr-review-skill/ Optional stack-aware pr-review generator
 AGENTS.md                       Vendor-neutral agent guidance
 CLAUDE.md                       Claude Code repository guidance
 ```
